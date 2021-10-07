@@ -1,0 +1,102 @@
+# input CatalogueItemInput {
+#   id: ID
+#   title: String
+#   description: String
+#   category: String
+#   variant: String
+#   supplier: String
+#   image: String
+#   sellPrice: Float
+#   buyPrice: Float
+# }
+
+# type Customer {
+#   id: ID
+#   firstName: String
+#   lastName: String
+#   phone: String
+#   email: String
+# }
+
+# input CustomerInput {
+#   id: ID
+# }
+
+# type GenericRequestResponse {
+#   message: String
+#   code: String
+#   object: Object
+# }
+
+# type InventoryItems {
+#   id: ID
+#   product: Product!
+#   quantity: Int
+# }
+
+# type Mutation {
+#   sellProducts(
+#     storeId: ID
+#     products: [ProductInput]
+#     customer: CustomerInput
+#   ): GenericRequestResponse
+#   registerCustomer(customer: RegisterCustomerInput): Customer
+#   addToCatalogue(storeId: ID, products: [CatalogueItemInput]): [Product!]
+#   removeFromCatalogue(storeId: ID, products: [CatalogueItemInput]): [Product!]
+# }
+
+# union Object = Product | Customer
+
+# type Product {
+#   id: ID
+#   title: String
+#   description: String
+#   image: String
+#   sellPrice: Float
+#   buyPrice: Float
+# }
+
+# input ProductInput {
+#   id: ID
+#   quantity: Int
+# }
+
+# input RegisterCustomerInput {
+#   firstName: String
+#   lastName: String
+#   phone: String
+#   email: String
+# }
+
+# type Query {
+#   storeCatalogue(storeId: ID): [Product!]
+#   storeInventoryItems(storeId: ID): [InventoryItems!]
+#   customer: Customer
+# }
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    articles: [Article!]! @hasMany
+}
+
+type Article {
+    id: ID!
+    title: String!
+    content: String!
+     author: User! @belongsTo(relation: "user")
+}
+
+type Query {
+    user(id: ID! @eq): User @find
+    users: [User!]! @paginate
+}
+
+type Mutation {
+    createUser(
+        name: String!
+        email: String! @rules(apply: ["email", "unique:users"])
+        password: String! @bcrypt @rules(apply: ["min:6"])
+    ): User @create
+}
