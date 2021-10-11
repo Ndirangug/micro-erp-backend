@@ -18,8 +18,8 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
         'email',
+        'phone',
         'password',
     ];
 
@@ -33,14 +33,8 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function articles()
-    {
-        return $this->hasMany(Article::class);
-    }
-
+   
+    
     /**
      * The attributes that should be cast.
      *
