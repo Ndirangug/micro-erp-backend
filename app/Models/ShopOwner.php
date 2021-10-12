@@ -20,4 +20,24 @@ class ShopOwner extends Model
         'photoUrl'
     ];
 
+   /**
+    * Get the user that owns the ShopOwner
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+   public function userAccount(): BelongsTo
+   {
+       return $this->belongsTo(User::class);
+   }
+
+   /**
+    * Get all of the shops for the ShopOwner
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+   public function shops(): HasMany
+   {
+       return $this->hasMany(Shop::class, 'foreign_key', 'local_key');
+   }
+
 }

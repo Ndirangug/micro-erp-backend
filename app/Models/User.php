@@ -43,4 +43,37 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     /**
+    * Get the shopOwner associated with the User
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+   public function shopOwner(): HasOne
+   {
+       return $this->hasOne(ShopOwner::class);
+   }
+
+
+    /**
+    * Get the customer associated with the User
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+   public function customer(): HasOne
+   {
+       return $this->hasOne(Customer::class);
+   }
+
+
+
+   /**
+    * Get the supplier associated with the User
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasOne
+    */
+   public function supplier(): HasOne
+   {
+       return $this->hasOne(Supplier::class);
+   }
 }
