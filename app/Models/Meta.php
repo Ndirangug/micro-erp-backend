@@ -20,7 +20,6 @@ class Meta extends Model
         'for_type',
     ];
 
-
     /**
      * Get the user that owns the Meta
      *
@@ -31,7 +30,7 @@ class Meta extends Model
         return $this->belongsTo(User::class);
     }
 
-      /**
+    /**
      * Get the user that owns the Meta
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -41,7 +40,7 @@ class Meta extends Model
         return $this->belongsTo(ShopOwner::class);
     }
 
-      /**
+    /**
      * Get the customer that owns the Meta
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -51,7 +50,7 @@ class Meta extends Model
         return $this->belongsTo(Customer::class);
     }
 
-      /**
+    /**
      * Get the supplier that owns the Meta
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -61,7 +60,7 @@ class Meta extends Model
         return $this->belongsTo(Supplier::class);
     }
 
-      /**
+    /**
      * Get the shop that owns the Meta
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -90,7 +89,7 @@ class Meta extends Model
     {
         return $this->belongsTo(Brand::class);
     }
-    
+
     /**
      * Get the InventoryItem that owns the Meta
      *
@@ -101,17 +100,7 @@ class Meta extends Model
         return $this->belongsTo(InventoryItem::class);
     }
 
-      /**
-     * Get the Supplier that owns the Meta
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function supplie(): BelongsTo
-    {
-        return $this->belongsTo(Supplier::class);
-    }
-
-      /**
+    /**
      * Get the SupplierItem that owns the Meta
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -121,8 +110,7 @@ class Meta extends Model
         return $this->belongsTo(SupplierItem::class);
     }
 
-
-      /**
+    /**
      * Get the purchaseOrder that owns the Meta
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -131,7 +119,6 @@ class Meta extends Model
     {
         return $this->belongsTo(PurchaseOrder::class);
     }
-   
 
     /**
      * Get the salesOrder that owns the Meta
@@ -162,5 +149,4 @@ class Meta extends Model
     {
         return $this->belongsTo(DebitNote::class);
     }
-
 }

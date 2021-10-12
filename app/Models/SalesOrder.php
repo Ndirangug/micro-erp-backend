@@ -19,9 +19,7 @@ class SalesOrder extends Model
         'amount'
     ];
 
-
-
-       /**
+    /**
      * Get all of the orderItems for the SupplierItem
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -31,7 +29,7 @@ class SalesOrder extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-      /**
+    /**
      * Get the shop that owns the PurchaseOrder
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -51,11 +49,11 @@ class SalesOrder extends Model
         return $this->belongsTo(Customer::class);
     }
 
-     /**
-     * Get all of the meta for the Customer
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    /**
+    * Get all of the meta for the Customer
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
     public function meta(): HasMany
     {
         return $this->hasMany(Meta::class);
@@ -70,5 +68,4 @@ class SalesOrder extends Model
     {
         return $this->hasOne(CreditNote::class);
     }
-
 }

@@ -9,7 +9,7 @@ class PurchaseOrder extends Model
 {
     use HasFactory;
 
-           /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -39,17 +39,17 @@ class PurchaseOrder extends Model
         return $this->belongsTo(Supplier::class);
     }
 
-     /**
-     * Get all of the meta for the Supplier
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    /**
+    * Get all of the meta for the Supplier
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
     public function meta(): HasMany
     {
         return $this->hasMany(Meta::class);
     }
 
-      /**
+    /**
      * Get all of the orderItems for the SupplierItem
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -68,5 +68,4 @@ class PurchaseOrder extends Model
     {
         return $this->hasOne(DebitNote::class);
     }
-
 }

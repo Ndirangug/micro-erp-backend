@@ -9,7 +9,7 @@ class CreditNote extends Model
 {
     use HasFactory;
 
-              /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -29,28 +29,27 @@ class CreditNote extends Model
         return $this->belongsTo(Shop::class);
     }
 
+    /**
+          * Get the customer that owns the CreditNote
+          *
+          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+          */
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
 
-   /**
-         * Get the customer that owns the CreditNote
-         *
-         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-         */
-        public function customer(): BelongsTo
-        {
-            return $this->belongsTo(Customer::class);
-        }
+    /**
+     * Get the salesOrder that owns the CreditNote
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function salesOrder(): BelongsTo
+    {
+        return $this->belongsTo(SalesOrder::class);
+    }
 
-        /**
-         * Get the salesOrder that owns the CreditNote
-         *
-         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-         */
-        public function salesOrder(): BelongsTo
-        {
-            return $this->belongsTo(SalesOrder::class, 'foreign_key', 'other_key');
-        }
-
-          /**
+    /**
      * Get all of the meta for the Supplier
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -59,5 +58,4 @@ class CreditNote extends Model
     {
         return $this->hasMany(Meta::class);
     }
-
 }

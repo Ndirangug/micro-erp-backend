@@ -9,7 +9,7 @@ class OrderItem extends Model
 {
     use HasFactory;
 
-            /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -48,11 +48,21 @@ class OrderItem extends Model
         return $this->belongsTo(InventoryItem::class);
     }
 
-     /**
-     * Get all of the meta for the Customer
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    /**
+    * Get the inventoryItem that owns the OrderItem
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+    public function salesOrder(): BelongsTo
+    {
+        return $this->belongsTo(SalesOrder::class);
+    }
+
+    /**
+    * Get all of the meta for the Customer
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
     public function meta(): HasMany
     {
         return $this->hasMany(Meta::class);

@@ -15,7 +15,15 @@ class CreateInventoryItemsTable extends Migration
     {
         Schema::create('inventory_items', function (Blueprint $table) {
             $table->id();
+            $table->integer('initialStock')->unsigned();
+            $table->integer('currentStock')->unsigned();
+            $table->double('boughtAt');
+            $table->double('sellAt');
+            $table->integer('shop_id')->unsigned();
+            $table->integer('product_id')->unsigned();
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

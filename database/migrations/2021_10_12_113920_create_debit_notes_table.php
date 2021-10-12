@@ -15,7 +15,15 @@ class CreateDebitNotesTable extends Migration
     {
         Schema::create('debit_notes', function (Blueprint $table) {
             $table->id();
+            $table->double('amount');
+            $table->dateTime('deadline');
+            $table->integer('supplier_id')->unsigned();
+            $table->integer('shop_id')->unsigned();
+            $table->integer('purchase_order_id')->unsigned();
             $table->timestamps();
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('purchase_order_id')->references('id')->on('purchase_orders')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
