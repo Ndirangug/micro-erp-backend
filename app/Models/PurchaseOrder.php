@@ -15,7 +15,6 @@ class PurchaseOrder extends Model
      * @var string[]
      */
     protected $fillable = [
-        'date',
         'amount'
     ];
 

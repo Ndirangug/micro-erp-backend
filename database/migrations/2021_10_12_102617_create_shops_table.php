@@ -15,7 +15,14 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('photoUrl');
+            $table->string('bio');
+            $table->string('phone');
+            $table->string('email');
+            $table->integer('shop_owner_id')->unsigned();
             $table->timestamps();
+            $table->foreign('shop_owner_id')->references('id')->on('shop_owners')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

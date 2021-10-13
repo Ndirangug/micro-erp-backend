@@ -19,7 +19,7 @@ class CreateDebitNotesTable extends Migration
             $table->dateTime('deadline');
             $table->integer('supplier_id')->unsigned();
             $table->integer('shop_id')->unsigned();
-            $table->integer('purchase_order_id')->unsigned();
+            $table->integer('purchase_order_id')->unsigned()->unique();
             $table->timestamps();
             $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');

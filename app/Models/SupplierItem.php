@@ -9,7 +9,7 @@ class SupplierItem extends Model
 {
     use HasFactory;
 
-       /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -58,5 +58,4 @@ class SupplierItem extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
-
 }

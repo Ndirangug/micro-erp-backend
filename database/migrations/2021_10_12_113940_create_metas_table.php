@@ -32,6 +32,19 @@ class CreateMetasTable extends Migration
             $table->integer('credit_note_id')->unsigned()->nullable();
             $table->integer('debit_note_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('shop_owner_id')->references('id')->on('shop_owners')->onDelete('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->foreign('inventory_item_id')->references('id')->on('inventory_items')->onDelete('cascade');
+            $table->foreign('supplier_item_id')->references('id')->on('supplier_items')->onDelete('cascade');
+            $table->foreign('purchase_order_id')->references('id')->on('purchase_orders')->onDelete('cascade');
+            $table->foreign('sales_order_id')->references('id')->on('sales_orders')->onDelete('cascade');
+            $table->foreign('credit_note_id')->references('id')->on('credit_notes')->onDelete('cascade');
+            $table->foreign('debit_note_id')->references('id')->on('debit_notes')->onDelete('cascade');
         });
     }
 

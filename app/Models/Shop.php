@@ -42,21 +42,21 @@ class Shop extends Model
         return $this->belongsTo(ShopOwner::class);
     }
 
-     /**
-     * Get all of the InventoryItems for the Product
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    /**
+    * Get all of the InventoryItems for the Product
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
     public function inventoryItems(): HasMany
     {
         return $this->hasMany(InventoryItem::class);
     }
 
-     /**
-     * Get all of the purchaseOrders for the Supplier
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    /**
+    * Get all of the purchaseOrders for the Supplier
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
     public function purchaseOrders(): HasMany
     {
         return $this->hasMany(PurchaseOrder::class);
@@ -82,34 +82,33 @@ class Shop extends Model
         return $this->hasMany(CreditNote::class);
     }
 
+    /**
+     * Get all of the debtors for the Shop
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function debtors(): HasManyThrough
+    {
+        return $this->hasManyThrough(Customer::class, CreditNote::class);
+    }
 
-  /**
-   * Get all of the debtors for the Shop
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-   */
-  public function debtors(): HasManyThrough
-  {
-      return $this->hasManyThrough(Customer::class, CreditNote::class);
-  }
+    /**
+     * Get all of the debitNotes for the Shop
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function debitNotes(): HasMany
+    {
+        return $this->hasMany(DebitNote::class);
+    }
 
-  /**
-   * Get all of the debitNotes for the Shop
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\HasMany
-   */
-  public function debitNotes(): HasMany
-  {
-      return $this->hasMany(DebitNote::class);
-  }
-
-  /**
-   * Get all of the creditors for the Shop
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-   */
-  public function creditors(): HasManyThrough
-  {
-      return $this->hasManyThrough(Supplier::class, DebitNote::class);
-  }
+    /**
+     * Get all of the creditors for the Shop
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function creditors(): HasManyThrough
+    {
+        return $this->hasManyThrough(Supplier::class, DebitNote::class);
+    }
 }
