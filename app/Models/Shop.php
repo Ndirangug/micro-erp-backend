@@ -111,4 +111,14 @@ class Shop extends Model
     {
         return $this->hasManyThrough(Supplier::class, DebitNote::class);
     }
+
+    /**
+     * Get all of the transactions for the PurchaseOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

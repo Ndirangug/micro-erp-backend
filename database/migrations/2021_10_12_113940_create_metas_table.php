@@ -31,6 +31,7 @@ class CreateMetasTable extends Migration
             $table->integer('sales_order_id')->unsigned()->nullable();
             $table->integer('credit_note_id')->unsigned()->nullable();
             $table->integer('debit_note_id')->unsigned()->nullable();
+            $table->integer('transaction_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('shop_owner_id')->references('id')->on('shop_owners')->onDelete('cascade');
@@ -45,6 +46,7 @@ class CreateMetasTable extends Migration
             $table->foreign('sales_order_id')->references('id')->on('sales_orders')->onDelete('cascade');
             $table->foreign('credit_note_id')->references('id')->on('credit_notes')->onDelete('cascade');
             $table->foreign('debit_note_id')->references('id')->on('debit_notes')->onDelete('cascade');
+            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
         });
     }
 

@@ -9,13 +9,13 @@ class Supplier extends Model
 {
     use HasFactory;
 
-        /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
      */
     protected $fillable = [
-       'name',
+        'name',
         'photoUrl'
     ];
 
@@ -24,16 +24,16 @@ class Supplier extends Model
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
-   public function userAccount(): BelongsTo
-   {
-       return $this->belongsTo(User::class);
-   }
+    public function userAccount(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
-     /**
-     * Get all of the supplierItems for the Product
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+    /**
+    * Get all of the supplierItems for the Product
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
     public function supplierItems(): HasMany
     {
         return $this->hasMany(SupplierItem::class);
@@ -69,24 +69,33 @@ class Supplier extends Model
         return $this->hasMany(PurchaseOrder::class);
     }
 
-     /**
+    /**
    * Get all of the debitNotes for the Shop
    *
    * @return \Illuminate\Database\Eloquent\Relations\HasMany
    */
-  public function debitNotes(): HasMany
-  {
-      return $this->hasMany(DebitNote::class);
-  }
+    public function debitNotes(): HasMany
+    {
+        return $this->hasMany(DebitNote::class);
+    }
 
-  /**
-   * The debtors that belong to the Supplier
-   *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-   */
-  public function debtors(): BelongsToMany
-  {
-      return $this->belongsToMany(Shop::class, 'debit_note');
-  }
+    /**
+     * The debtors that belong to the Supplier
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function debtors(): BelongsToMany
+    {
+        return $this->belongsToMany(Shop::class, 'debit_note');
+    }
 
+    /**
+     * Get all of the transactions for the PurchaseOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

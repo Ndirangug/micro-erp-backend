@@ -149,4 +149,14 @@ class Meta extends Model
     {
         return $this->belongsTo(DebitNote::class);
     }
+
+    /**
+     * Get the transaction that owns the Meta
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function transaction(): BelongsTo
+    {
+        return $this->belongsTo(Transaction::class);
+    }
 }

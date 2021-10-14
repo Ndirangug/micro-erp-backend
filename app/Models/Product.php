@@ -69,4 +69,14 @@ class Product extends Model
     {
         return $this->belongsToMany(Supplier::class, 'supplier_items');
     }
+
+    /**
+     * Get the user that owns the Product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
+    }
 }

@@ -18,7 +18,9 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('mainImage');
+            $table->integer('brand_id')->unsigned();
             $table->timestamps();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

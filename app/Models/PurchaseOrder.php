@@ -67,4 +67,14 @@ class PurchaseOrder extends Model
     {
         return $this->hasOne(DebitNote::class);
     }
+
+    /**
+     * Get all of the transactions for the PurchaseOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

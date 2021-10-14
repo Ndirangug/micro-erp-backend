@@ -69,4 +69,14 @@ class Customer extends Model
     {
         return $this->belongsToMany(Shop::class, 'credit_notes');
     }
+
+    /**
+     * Get all of the transactions for the PurchaseOrder
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
