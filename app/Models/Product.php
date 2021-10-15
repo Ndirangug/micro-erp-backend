@@ -79,4 +79,14 @@ class Product extends Model
     {
         return $this->belongsTo(Brand::class);
     }
+
+    /**
+    * Get all of the productCategories for the product
+    *
+    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    */
+    public function productCategories(): HasMany
+    {
+        return $this->hasMany(ProductCategory::class);
+    }
 }

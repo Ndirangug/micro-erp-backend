@@ -22,7 +22,13 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'amount'                           => $this->faker->randomFloat(2),
+            'comment'                          => $this->faker->randomElement(['purchase', 'sale', 'customer_refund', 'supplier_refund']),
+            'supplier_id'                      => $this->faker->numberBetween(1, 100),
+            'shop_id'                          => $this->faker->numberBetween(1, 100),
+            'customer_id'                      => $this->faker->numberBetween(1, 100),
+            'purchase_order_id'                => $this->faker->numberBetween(1, 100),
+            'sales_order_id'                   => $this->faker->numberBetween(1, 100),
         ];
     }
 }

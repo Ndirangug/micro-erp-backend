@@ -22,7 +22,9 @@ class PurchaseOrderFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'amount'                => $this->faker->randomFloat(2),
+            'supplier_id'           => $this->faker->numberBetween(1, 100),
+            'shop_id'               => $this->faker->numberBetween(1, 100),
         ];
     }
 }

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\SalesOrder;
+use App\Models\ProductCategory;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SalesOrderFactory extends Factory
+class ProductCategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = SalesOrder::class;
+    protected $model = ProductCategory::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +22,8 @@ class SalesOrderFactory extends Factory
     public function definition()
     {
         return [
-            'amount'                => $this->faker->randomFloat(2),
-            'customer_id'           => $this->faker->numberBetween(1, 100),
-            'shop_id'               => $this->faker->numberBetween(1, 100),
+            'product_id'          => $this->faker->numberBetween(1, 100),
+            'category_id'         => $this->faker->numberBetween(1, 100),
         ];
     }
 }

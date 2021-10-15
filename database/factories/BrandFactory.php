@@ -22,7 +22,9 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'bio'      => $this->faker->paragraph(),
+            'name'     => $this->faker->word(),
+            'photoUrl' => 'https://ui-avatars.com/api/?background=random',
         ];
     }
 }

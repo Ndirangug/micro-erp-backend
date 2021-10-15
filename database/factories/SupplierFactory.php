@@ -22,7 +22,9 @@ class SupplierFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'               => $this->faker->firstName(),
+            'photoUrl'           => 'https://ui-avatars.com/api/?background=random',
+            'user_id'            => $this->faker->unique()->numberBetween(1, 100),
         ];
     }
 }

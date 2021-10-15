@@ -22,7 +22,12 @@ class InventoryItemFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'initialStock'        => $this->faker->numberBetween(101, 1000),
+            'currentStock'        => $this->faker->numberBetween(2, 100),
+            'boughtAt'            => $this->faker->randomFloat(2),
+            'sellAt'              => $this->faker->randomFloat(2),
+            'shop_id'             => $this->faker->numberBetween(1, 100),
+            'product_id'          => $this->faker->numberBetween(1, 100),
         ];
     }
 }

@@ -35,4 +35,14 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    /**
+     * Get all of the productCategories for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function productCategories(): HasMany
+    {
+        return $this->hasMany(ProductCategory::class);
+    }
 }

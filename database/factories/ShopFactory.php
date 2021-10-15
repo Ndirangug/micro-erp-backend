@@ -22,7 +22,12 @@ class ShopFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'                     => $this->faker->company(),
+            'photoUrl'                 => 'https://ui-avatars.com/api/?background=random',
+            'bio'                      => $this->faker->sentences(),
+            'phone'                    => $this->faker->phoneNumber(),
+            'email'                    => $this->faker->email(),
+            'shop_owner_id'            => $this->faker->numberBetween(1, 100),
         ];
     }
 }

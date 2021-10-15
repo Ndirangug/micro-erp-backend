@@ -22,7 +22,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'     => $this->faker->word(),
+            'photoUrl' => 'https://ui-avatars.com/api/?background=random',
         ];
     }
 }
