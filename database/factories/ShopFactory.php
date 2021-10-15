@@ -24,10 +24,10 @@ class ShopFactory extends Factory
         return [
             'name'                     => $this->faker->company(),
             'photoUrl'                 => 'https://ui-avatars.com/api/?background=random',
-            'bio'                      => $this->faker->sentences(),
+            'bio'                      => $this->faker->paragraph(),
             'phone'                    => $this->faker->phoneNumber(),
             'email'                    => $this->faker->email(),
-            'shop_owner_id'            => $this->faker->numberBetween(1, 100),
+            'shop_owner_id'            => $this->faker->numberBetween(1, 40),
         ];
     }
 }

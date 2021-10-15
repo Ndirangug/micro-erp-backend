@@ -24,7 +24,7 @@ class SupplierItemFactory extends Factory
         return [
             'unitsAvailable'            => $this->faker->numberBetween(101, 1000),
             'supplyAt'                  => $this->faker->randomFloat(2),
-            'supplier_id'               => $this->faker->numberBetween(1, 100),
+            'supplier_id'               => $this->faker->numberBetween(1, 40),
             'product_id'                => $this->faker->numberBetween(1, 100),
         ];
     }

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\DebitNote;
 
 class DebitNoteSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class DebitNoteSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DebitNote::factory()
+            ->count(100)
+            ->create();
     }
 }

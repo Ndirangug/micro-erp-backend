@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\SupplierItem;
 
 class SupplierItemSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class SupplierItemSeeder extends Seeder
      */
     public function run()
     {
-        //
+        SupplierItem::factory()
+            ->count(100)
+            ->create();
     }
 }

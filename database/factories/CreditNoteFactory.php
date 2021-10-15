@@ -23,10 +23,9 @@ class CreditNoteFactory extends Factory
     {
         return [
             'amount'             => $this->faker->randomFloat(2),
-            'deadline'           => $this->faker->dateTime(date_add(date_interval_create_from_date_string('40 days'), get_date())),
-            'customer_id'        => $this->faker->numberBetween(1, 100),
+            'deadline'           => $this->faker->dateTime(date_add(date_create(), date_interval_create_from_date_string('40 days'))),
+            'customer_id'        => $this->faker->numberBetween(1, 40),
             'shop_id'            => $this->faker->numberBetween(1, 100),
-            'sales_order_id'     => $this->faker->numberBetween(1, 100),
         ];
     }
 }

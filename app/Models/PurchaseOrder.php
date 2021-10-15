@@ -59,13 +59,13 @@ class PurchaseOrder extends Model
     }
 
     /**
-     * Get the debitNote associated with the PurchaseOrder
+     * Get the debitNote that owns the PurchaseOrder
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function debitNote(): HasOne
+    public function debitNote(): BelongsTo
     {
-        return $this->hasOne(DebitNote::class);
+        return $this->belongsTo(DebitNote::class);
     }
 
     /**

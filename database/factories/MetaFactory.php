@@ -27,10 +27,9 @@ class MetaFactory extends Factory
             'for_type'                                     => '',
             'user_id'                                      => $this->faker->optional()->numberBetween(1, 100),
             'shop_id'                                      => $this->faker->optional()->numberBetween(1, 100),
-            'customer_id'                                  => $this->faker->optional()->numberBetween(1, 100),
-            'shop_owner_id'                                => $this->faker->optional()->numberBetween(1, 100),
-            'customer_id'                                  => $this->faker->optional()->numberBetween(1, 100),
-            'supplier_id'                                  => $this->faker->optional()->numberBetween(1, 100),
+            'customer_id'                                  => $this->faker->optional()->numberBetween(1, 40),
+            'shop_owner_id'                                => $this->faker->optional()->numberBetween(1, 40),
+            'supplier_id'                                  => $this->faker->optional()->numberBetween(1, 40),
             'product_id'                                   => $this->faker->optional()->numberBetween(1, 100),
             'brand_id'                                     => $this->faker->optional()->numberBetween(1, 100),
             'inventory_item_id'                            => $this->faker->optional()->numberBetween(1, 100),
@@ -39,7 +38,7 @@ class MetaFactory extends Factory
             'sales_order_id'                               => $this->faker->optional()->numberBetween(1, 100),
             'credit_note_id'                               => $this->faker->optional()->numberBetween(1, 100),
             'debit_note_id'                                => $this->faker->optional()->numberBetween(1, 100),
-            'transaction_id'                               => $this->faker->optional()->numberBetween(1, 100),
+            'transaction_id'                               => $this->faker->optional()->numberBetween(50, 149),
         ];
     }
 }

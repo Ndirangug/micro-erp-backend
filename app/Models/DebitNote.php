@@ -9,7 +9,7 @@ class DebitNote extends Model
 {
     use HasFactory;
 
-                /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -19,7 +19,7 @@ class DebitNote extends Model
         'deadline',
     ];
 
-      /**
+    /**
      * Get the shop that owns the CreditNote
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -40,16 +40,16 @@ class DebitNote extends Model
     }
 
     /**
-     * Get the purchaseOrder that owns the DebitNote
+     * Get the purchaseOrder associated with the DebitNote
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function purchaseOrder(): BelongsTo
+    public function purchaseOrder(): HasOne
     {
-        return $this->belongsTo(PurchaseOrder::class);
+        return $this->hasOne(PurchaseOrder::class);
     }
 
-      /**
+    /**
      * Get all of the meta for the Supplier
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -59,13 +59,13 @@ class SalesOrder extends Model
     }
 
     /**
-     * Get the creditNote associated with the SalesOrder
+     * Get the creditNote that owns the SalesOrder
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function creditNote(): HasOne
+    public function creditNote(): BelongsTo
     {
-        return $this->hasOne(CreditNote::class);
+        return $this->belongsTo(CreditNote::class);
     }
 
     /**

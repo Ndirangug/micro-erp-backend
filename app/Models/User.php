@@ -33,8 +33,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-   
-    
     /**
      * The attributes that should be cast.
      *
@@ -44,36 +42,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-     /**
+    /**
     * Get the shopOwner associated with the User
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasOne
     */
-   public function shopOwner(): HasOne
-   {
-       return $this->hasOne(ShopOwner::class);
-   }
-
+    public function shopOwner(): HasOne
+    {
+        return $this->hasOne(ShopOwner::class);
+    }
 
     /**
     * Get the customer associated with the User
     *
     * @return \Illuminate\Database\Eloquent\Relations\HasOne
     */
-   public function customer(): HasOne
-   {
-       return $this->hasOne(Customer::class);
-   }
+    public function customer(): HasOne
+    {
+        return $this->hasOne(Customer::class);
+    }
 
-
-
-   /**
-    * Get the supplier associated with the User
-    *
-    * @return \Illuminate\Database\Eloquent\Relations\HasOne
-    */
-   public function supplier(): HasOne
-   {
-       return $this->hasOne(Supplier::class);
-   }
+    /**
+     * Get the supplier associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function supplier(): HasOne
+    {
+        return $this->hasOne(Supplier::class);
+    }
 }

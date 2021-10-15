@@ -25,7 +25,7 @@ class CustomerFactory extends Factory
             'firstName'          => $this->faker->firstName(),
             'lastName'           => $this->faker->firstName(),
             'photoUrl'           => 'https://ui-avatars.com/api/?background=random',
-            'user_id'            => $this->faker->unique()->numberBetween(1, 100),
+            'user_id'            => $this->faker->unique()->numberBetween(1, 120),
         ];
     }
 }

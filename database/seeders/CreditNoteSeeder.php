@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\CreditNote;
+
 
 class CreditNoteSeeder extends Seeder
 {
@@ -13,6 +15,8 @@ class CreditNoteSeeder extends Seeder
      */
     public function run()
     {
-        //
+        CreditNote::factory()
+            ->count(100)
+            ->create();
     }
 }

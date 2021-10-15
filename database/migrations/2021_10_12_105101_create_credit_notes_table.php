@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDebitNotesTable extends Migration
+class CreateCreditNotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateDebitNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('debit_notes', function (Blueprint $table) {
+        Schema::create('credit_notes', function (Blueprint $table) {
             $table->id();
             $table->double('amount');
             $table->dateTime('deadline');
-            $table->integer('supplier_id')->unsigned();
+            $table->integer('customer_id')->unsigned();
             $table->integer('shop_id')->unsigned();
-            $table->integer('purchase_order_id')->unsigned()->unique();
             $table->timestamps();
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('purchase_order_id')->references('id')->on('purchase_orders')->onDelete('cascade')->onUpdate('cascade');
+    
         });
     }
 
@@ -34,6 +33,6 @@ class CreateDebitNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('debit_notes');
+        Schema::dropIfExists('credit_notes');
     }
 }

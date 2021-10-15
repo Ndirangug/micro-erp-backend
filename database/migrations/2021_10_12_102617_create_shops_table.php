@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('photoUrl');
-            $table->string('bio');
+            $table->string('bio', 1000);
             $table->string('phone');
             $table->string('email');
             $table->integer('shop_owner_id')->unsigned();
