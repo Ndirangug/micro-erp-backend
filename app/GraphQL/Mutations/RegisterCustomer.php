@@ -13,11 +13,16 @@ class RegisterCustomer
      */
     public function __invoke($_, array $args)
     {
-        $user = User::create([
-            'email'    => $args['customer']['email'],
-            'phone'    => $args['customer']['phone'],
-            'password' => $args['customer']['password'],
-        ]);
+        $user;
+        if (array_key_exists('user_id', $args['customer'])) {
+            $user = User::find($args['customer']['user_id']);
+        } else {
+            $user = User::create([
+                'email'    => $args['customer']['email'],
+                'phone'    => $args['customer']['phone'],
+                'password' => $args['customer']['password'],
+            ]);
+        }
 
         $customer = new Customer([
             'firstName'    => $args['customer']['firstName'],

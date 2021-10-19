@@ -9,10 +9,43 @@ input CatalogueItemInput {
     buyPrice: Float
 }
 
-type Customer {
+type Shop {
+    id: ID
+    name: String
+    phone: String
+    email: String
+    photoUrl: String
+    bio: String
+}
+
+interface IUser {
+    id: ID
+    phone: String
+    email: String
+    photoUrl: String
+}
+
+type Customer implements IUser {
     id: ID
     firstName: String
     lastName: String
+    phone: String
+    email: String
+    photoUrl: String
+}
+
+type ShopOwner implements IUser {
+    id: ID
+    firstName: String
+    lastName: String
+    phone: String
+    email: String
+    photoUrl: String
+}
+
+type Supplier implements IUser {
+    id: ID
+    name: String
     phone: String
     email: String
     photoUrl: String
@@ -69,9 +102,36 @@ input RegisterCustomerInput {
     email: String
     password: String
     photoUrl: String
-
+    user_id: Int
 }
 
+input ShopOwnerInput {
+    firstName: String
+    lastName: String
+    phone: String
+    email: String
+    password: String
+    photoUrl: String
+    user_id: Int
+}
+
+input SupplierInput {
+    name: String
+    phone: String
+    email: String
+    password: String
+    photoUrl: String
+    user_id: Int
+}
+
+input ShopInput {
+    name: String
+    phone: String
+    email: String
+    photoUrl: String
+    bio: String
+    shop_owner_id: Int
+}
 
 type Query {
     inventoryItems(shop_id: Int!): [InventoryItem!]
@@ -83,7 +143,10 @@ type Mutation {
         items: [InventoryItemInput!]!
         customer_id: Int
     ): GenericRequestResponse
-    registerCustomer(customer: RegisterCustomerInput): Customer
+    registerCustomer(customer: RegisterCustomerInput): Customer!
+    registerShopOwner(shopOwner: ShopOwnerInput): ShopOwner!
+    registerSupplier(supplier: SupplierInput): Supplier!
+    registerShop(shop: ShopInput @spread): Shop! @create(model: "Shop")
     addToInventory(item: InventoryItemInput! @spread): InventoryItem!
         @create(model: "InventoryItem")
     createProduct(product: ProductInput @spread): Product! @create
