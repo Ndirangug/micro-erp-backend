@@ -78,13 +78,16 @@ type Product {
     mainImage: String
 }
 
-input ProductInput {
+input ProductsInput {
     title: String
     description: String
     mainImage: String
-    brand: String
     brand_id: Int
 }
+
+# input ProductDetails {
+
+# }
 
 input InventoryItemInput {
     shop_id: Int
@@ -149,7 +152,7 @@ type Mutation {
     registerShop(shop: ShopInput @spread): Shop! @create(model: "Shop")
     addToInventory(item: InventoryItemInput! @spread): InventoryItem!
         @create(model: "InventoryItem")
-    createProduct(product: ProductInput @spread): Product! @create
+    createProducts(products: [ProductsInput!]): Int
     removeFromCatalogue(
         store_id: ID
         products: [CatalogueItemInput]

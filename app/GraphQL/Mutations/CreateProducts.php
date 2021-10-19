@@ -2,7 +2,10 @@
 
 namespace App\GraphQL\Mutations;
 
-class RegisterShop
+use App\Models\User;
+use App\Models\Product;
+
+class CreateProducts
 {
     /**
      * @param  null  $_
@@ -10,6 +13,7 @@ class RegisterShop
      */
     public function __invoke($_, array $args)
     {
-        // TODO implement the resolver
+        $products = Product::insert($args['products']);
+        return $products;
     }
 }
