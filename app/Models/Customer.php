@@ -9,7 +9,7 @@ class Customer extends Model
 {
     use HasFactory;
 
-        /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var string[]
@@ -25,10 +25,10 @@ class Customer extends Model
     *
     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
-   public function userAccount(): BelongsTo
-   {
-       return $this->belongsTo(User::class);
-   }
+    public function userAccount(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     /**
      * Get all of the salesOrders for the Shop
@@ -50,7 +50,7 @@ class Customer extends Model
         return $this->hasMany(Meta::class);
     }
 
-      /**
+    /**
      * Get all of the creditNotes for the Shop
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

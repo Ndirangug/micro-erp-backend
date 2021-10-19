@@ -1,76 +1,94 @@
 input CatalogueItemInput {
-  id: ID
-  title: String
-  description: String
-  category: String
-  variant: String
-  supplier: String
-  image: String
-  sellPrice: Float
-  buyPrice: Float
+    id: ID
+    title: String
+    description: String
+    category: String
+    supplier: String
+    image: String
+    sellPrice: Float
+    buyPrice: Float
 }
 
 type Customer {
-  id: ID
-  firstName: String
-  lastName: String
-  phone: String
-  email: String
+    id: ID
+    firstName: String
+    lastName: String
+    phone: String
+    email: String
+    photoUrl: String
 }
 
 input CustomerInput {
-  id: ID
+    id: ID
 }
 
 type GenericRequestResponse {
-  message: String
-  code: String
-  object: Object
+    message: String
+    code: String
+    object: Object
 }
 
-type InventoryItems {
-  id: ID
-  product: Product!
-  quantity: Int
-}
-
-type Mutation {
-  sellProducts(
-    storeId: ID
-    products: [ProductInput]
-    customer: CustomerInput
-  ): GenericRequestResponse
-  registerCustomer(customer: RegisterCustomerInput): Customer
-  addToCatalogue(storeId: ID, products: [CatalogueItemInput]): [Product!]
-  removeFromCatalogue(storeId: ID, products: [CatalogueItemInput]): [Product!]
+type InventoryItem {
+    id: ID
+    product: Product!
+    quantity: Int
+    sellPrice: Float
+    buyPrice: Float
 }
 
 union Object = Product | Customer
 
 type Product {
-  id: ID
-  title: String
-  description: String
-  image: String
-  sellPrice: Float
-  buyPrice: Float
+    id: ID
+    title: String
+    description: String
+    mainImage: String
 }
 
 input ProductInput {
-  id: ID
-  quantity: Int
+    title: String
+    description: String
+    mainImage: String
+    brand: String
+    brand_id: Int
+}
+
+input InventoryItemInput {
+    shop_id: Int
+    product_id: Int
+    initialStock: Int
+    currentStock: Int
+    boughtAt: Float
+    sellAt: Float
 }
 
 input RegisterCustomerInput {
-  firstName: String
-  lastName: String
-  phone: String
-  email: String
+    firstName: String
+    lastName: String
+    phone: String
+    email: String
+    password: String
+    photoUrl: String
+
 }
+
 
 type Query {
-  storeCatalogue(storeId: ID): [Product!]
-  storeInventoryItems(storeId: ID): [InventoryItems!]
-  customer: Customer
+    inventoryItems(shop_id: Int!): [InventoryItem!]
+    customer(email: String!): Customer
 }
 
+type Mutation {
+    sellProducts(
+        items: [InventoryItemInput!]!
+        customer_id: Int
+    ): GenericRequestResponse
+    registerCustomer(customer: RegisterCustomerInput): Customer
+    addToInventory(item: InventoryItemInput! @spread): InventoryItem!
+        @create(model: "InventoryItem")
+    createProduct(product: ProductInput @spread): Product! @create
+    removeFromCatalogue(
+        store_id: ID
+        products: [CatalogueItemInput]
+    ): [Product!]
+}
