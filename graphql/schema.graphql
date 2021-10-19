@@ -9,6 +9,13 @@ input CatalogueItemInput {
     buyPrice: Float
 }
 
+type Brand {
+    id: ID
+    name: String
+    photoUrl: String
+    bio: String
+}
+
 type Shop {
     id: ID
     name: String
@@ -136,6 +143,12 @@ input ShopInput {
     shop_owner_id: Int
 }
 
+input BrandInput {
+    name: String
+    photoUrl: String
+    bio: String
+}
+
 type Query {
     inventoryItems(shop_id: Int!): [InventoryItem!]
     customer(email: String!): Customer
@@ -157,4 +170,5 @@ type Mutation {
         store_id: ID
         products: [CatalogueItemInput]
     ): [Product!]
+    createBrand(brand: BrandInput! @spread): Brand!  @create(model: "Brand")
 }
