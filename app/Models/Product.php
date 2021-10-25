@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Relations\HasMany;
+use \Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use \Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class Product extends Model
 {
@@ -24,7 +28,7 @@ class Product extends Model
     /**
      * Get all of the meta for the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function meta(): HasMany
     {
@@ -34,7 +38,7 @@ class Product extends Model
     /**
      * The categories that belong to the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function categories(): BelongsToMany
     {
@@ -44,7 +48,7 @@ class Product extends Model
     /**
      * Get all of the InventoryItems for the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function inventoryItems(): HasMany
     {
@@ -54,7 +58,7 @@ class Product extends Model
     /**
      * Get all of the supplierItems for the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function supplierItems(): HasMany
     {
@@ -64,7 +68,7 @@ class Product extends Model
     /**
      * The suppliers that belong to the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
     public function suppliers(): BelongsToMany
     {
@@ -74,7 +78,7 @@ class Product extends Model
     /**
      * Get the user that owns the Product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function brand(): BelongsTo
     {
@@ -84,7 +88,7 @@ class Product extends Model
     /**
     * Get all of the productCategories for the product
     *
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    * @return HasMany
     */
     public function productCategories(): HasMany
     {

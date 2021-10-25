@@ -15,7 +15,8 @@ class SalesOrder extends Model
      * @var string[]
      */
     protected $fillable = [
-        'amount'
+        'amount',
+        'order_no',
     ];
 
     /**

@@ -16,6 +16,7 @@ class CreatePurchaseOrdersTable extends Migration
         Schema::create('purchase_orders', function (Blueprint $table) {
             $table->id();
             $table->double('amount');
+            $table->string("order_no")->unique();
             $table->integer('supplier_id')->unsigned();
             $table->integer('shop_id')->unsigned();
             $table->integer('debit_note_id')->unsigned()->unique();

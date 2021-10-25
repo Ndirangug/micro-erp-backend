@@ -22,7 +22,7 @@ class CreateCreditNotesTable extends Migration
             $table->timestamps();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
-    
+
         });
     }
 

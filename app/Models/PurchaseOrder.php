@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PurchaseOrder extends Model
 {
@@ -15,13 +17,14 @@ class PurchaseOrder extends Model
      * @var string[]
      */
     protected $fillable = [
-        'amount'
+        'amount',
+        'order_no',
     ];
 
     /**
      * Get the shop that owns the PurchaseOrder
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function shop(): BelongsTo
     {
@@ -31,7 +34,7 @@ class PurchaseOrder extends Model
     /**
      * Get the supplier that owns the PurchaseOrder
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function supplier(): BelongsTo
     {
@@ -41,7 +44,7 @@ class PurchaseOrder extends Model
     /**
     * Get all of the meta for the Supplier
     *
-    * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    * @return HasMany
     */
     public function meta(): HasMany
     {
@@ -51,7 +54,7 @@ class PurchaseOrder extends Model
     /**
      * Get all of the orderItems for the SupplierItem
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function orderItems(): HasMany
     {
@@ -61,7 +64,7 @@ class PurchaseOrder extends Model
     /**
      * Get the debitNote that owns the PurchaseOrder
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function debitNote(): BelongsTo
     {
@@ -71,7 +74,7 @@ class PurchaseOrder extends Model
     /**
      * Get all of the transactions for the PurchaseOrder
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function transactions(): HasMany
     {

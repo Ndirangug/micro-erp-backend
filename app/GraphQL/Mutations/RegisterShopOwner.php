@@ -8,12 +8,13 @@ use App\Models\ShopOwner;
 class RegisterShopOwner
 {
     /**
-     * @param  null  $_
-     * @param  array<string, mixed>  $args
+     * @param null $_
+     * @param array<string, mixed> $args
+     * @return mixed
      */
     public function __invoke($_, array $args)
     {
-        $user;
+
         if (array_key_exists('user_id', $args['shopOwner'])) {
             $user = User::find($args['shopOwner']['user_id']);
         } else {
