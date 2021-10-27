@@ -105,7 +105,7 @@ type SalesOrder{
     order_no: String
     customer_id: Int
     shop_id: Int
-    debit_note_id: Int
+    credit_note_id: Int
 }
 
 
@@ -194,12 +194,12 @@ input OrderItemInput{
 
 input CreditNoteInput{
     amount: Float
-    deadline: Float
+    deadline: String
 }
 
 input DebitNoteInput{
     amount: Float
-    deadline: Float
+    deadline: String
 }
 
 input BrandInput {

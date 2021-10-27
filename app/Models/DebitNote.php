@@ -17,6 +17,8 @@ class DebitNote extends Model
     protected $fillable = [
         'amount',
         'deadline',
+        'supplier_id',
+        'shop_id'
     ];
 
     /**

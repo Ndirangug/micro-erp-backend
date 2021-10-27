@@ -19,6 +19,9 @@ class PurchaseOrder extends Model
     protected $fillable = [
         'amount',
         'order_no',
+        'supplier_id',
+        'shop_id',
+        'debit_note_id'
     ];
 
     /**

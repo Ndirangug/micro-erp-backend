@@ -17,6 +17,8 @@ class CreditNote extends Model
     protected $fillable = [
         'amount',
         'deadline',
+        'customer_id',
+        'shop_id',
     ];
 
     /**
