@@ -14,7 +14,6 @@ class RegisterShopOwner
      */
     public function __invoke($_, array $args)
     {
-
         if (array_key_exists('user_id', $args['shopOwner'])) {
             $user = User::find($args['shopOwner']['user_id']);
         } else {
@@ -33,6 +32,6 @@ class RegisterShopOwner
 
         $user->shopOwner()->save($shopOwner);
 
-        return $user->toArray() + $user->shopOwner->toArray();
+        return  $user->shopOwner->toArray() + $user->toArray();
     }
 }
