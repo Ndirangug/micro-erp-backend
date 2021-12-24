@@ -16,10 +16,10 @@ class CreateSalesOrdersTable extends Migration
         Schema::create('sales_orders', function (Blueprint $table) {
             $table->id();
             $table->double('amount');
-            $table->string("order_no")->unique();
+            $table->string('order_no')->unique();
             $table->integer('customer_id')->unsigned();
             $table->integer('shop_id')->unsigned();
-            $table->integer('credit_note_id')->unsigned()->unique();
+            $table->integer('credit_note_id')->unsigned()->unique()->nullable();
             $table->timestamps();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('credit_note_id')->references('id')->on('credit_notes')->onDelete('cascade')->onUpdate('cascade');
