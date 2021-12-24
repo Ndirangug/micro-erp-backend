@@ -21,7 +21,7 @@ class InventoryItems
         foreach ($items as $item) {
             $product = $item->product;
             //$product = Product::find($item['product_id']);
-            array_push($results, ['quantity'=> $item['currentStock'], 'id'=> $item['id'], 'sellPrice'=> $item['sellAt'], 'buyPrice'=> $item['buyAt'], 'product'=> $product]);
+            array_push($results, ['currentStock'=> $item['currentStock'], 'id'=> $item['id'], 'sellPrice'=> $item['sellAt'], 'buyPrice'=> $item['boughtAt'], 'product'=> $product]);
         }
 
         return $results;
