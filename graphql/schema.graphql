@@ -1,3 +1,6 @@
+scalar DateTime
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
 input CatalogueItemInput {
     id: ID
     title: String
@@ -58,6 +61,20 @@ type Supplier implements IUser {
     photoUrl: String
 }
 
+type Transaction {
+    id: ID
+    customer: Customer
+    shop: Shop
+    created_at: DateTime
+    amount: Float
+    comment: String
+    ref: String
+    method: String
+    supplier: Supplier
+    purchaseOrder: PurchaseOrder
+    salesOrder: SalesOrder
+}
+
 input CustomerInput {
     id: ID
 }
@@ -92,7 +109,7 @@ type Product {
     mainImage: String
 }
 
-type PurchaseOrder{
+type PurchaseOrder {
     id: Int
     order_no: String
     supplier_id: Int
@@ -100,14 +117,13 @@ type PurchaseOrder{
     debit_note_id: Int
 }
 
-type SalesOrder{
+type SalesOrder {
     id: Int
     order_no: String
     customer_id: Int
     shop_id: Int
     credit_note_id: Int
 }
-
 
 input ProductsInput {
     title: String
@@ -123,7 +139,6 @@ input InventoryItemInput {
     currentStock: Int
     boughtAt: Float
     sellAt: Float
-
 }
 input SupplierItemInput {
     supplier_id: Int
@@ -170,34 +185,34 @@ input ShopInput {
     shop_owner_id: Int
 }
 
-input SalesOrderInput{
+input SalesOrderInput {
     amount: Float
     customer_id: Int
     shop_id: Int
     credit_note: CreditNoteInput
-    items:[OrderItemInput!]!
+    items: [OrderItemInput!]!
 }
 
-input PurchaseOrderInput{
+input PurchaseOrderInput {
     amount: Float
     supplier_id: Int
     shop_id: Int
     debit_note: DebitNoteInput
-    items:[OrderItemInput!]!
+    items: [OrderItemInput!]!
 }
 
-input OrderItemInput{
+input OrderItemInput {
     quantity: Int
     supplier_item_id: Int
     inventory_item_id: Int
 }
 
-input CreditNoteInput{
+input CreditNoteInput {
     amount: Float
     deadline: String
 }
 
-input DebitNoteInput{
+input DebitNoteInput {
     amount: Float
     deadline: String
 }
@@ -206,6 +221,18 @@ input BrandInput {
     name: String
     photoUrl: String
     bio: String
+}
+
+input TransactionInput {
+    amount: Float
+    comment: String
+    ref: String
+    method: String
+    supplier_id: Int
+    purchase_order_id: Int
+    sales_order_id: Int
+    customer_id: Int
+    shop_id: Int
 }
 
 type Query {
@@ -232,8 +259,9 @@ type Mutation {
         store_id: ID
         products: [CatalogueItemInput]
     ): [Product!]
-    createBrand(brand: BrandInput! @spread): Brand!  @create(model: "Brand")
+    createBrand(brand: BrandInput! @spread): Brand! @create(model: "Brand")
     makePurchaseOrder(order: PurchaseOrderInput): PurchaseOrder
     makeSalesOrder(order: SalesOrderInput): SalesOrder
-
+    makeTransaction(transaction: TransactionInput! @spread): Transaction!
+        @create(model: "Transaction")
 }

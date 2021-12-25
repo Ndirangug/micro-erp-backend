@@ -23,7 +23,9 @@ class TransactionFactory extends Factory
     {
         return [
             'amount'                           => $this->faker->randomFloat(2),
+            'ref'                              => $this->faker->unique()->uuid(),
             'comment'                          => $this->faker->randomElement(['purchase', 'sale', 'customer_refund', 'supplier_refund']),
+            'method'                           => $this->faker->randomElement(['cash', 'mpesa']),
             'supplier_id'                      => $this->faker->numberBetween(1, 40),
             'shop_id'                          => $this->faker->numberBetween(1, 100),
             'customer_id'                      => $this->faker->numberBetween(1, 40),

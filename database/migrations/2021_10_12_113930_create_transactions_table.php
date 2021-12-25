@@ -16,12 +16,14 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->double('amount');
-            $table->string('comment');
+            $table->string('comment')->nullable();
+            $table->string('method');  // cash, mpesa
+            $table->string('ref')->nullable();  // transaction code from the payment provider
             $table->integer('shop_id')->unsigned();
-            $table->integer('supplier_id')->unsigned();
-            $table->integer('customer_id')->unsigned();
-            $table->integer('purchase_order_id')->unsigned();
-            $table->integer('sales_order_id')->unsigned();
+            $table->integer('supplier_id')->unsigned()->nullable();
+            $table->integer('customer_id')->unsigned()->nullable();
+            $table->integer('purchase_order_id')->unsigned()->nullable();
+            $table->integer('sales_order_id')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('purchase_order_id')->references('id')->on('purchase_orders')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('sales_order_id')->references('id')->on('sales_orders')->onDelete('cascade')->onUpdate('cascade');
