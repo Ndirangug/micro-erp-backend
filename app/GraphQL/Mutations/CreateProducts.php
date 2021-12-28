@@ -14,6 +14,7 @@ class CreateProducts
     public function __invoke($_, array $args)
     {
         $products = Product::insert($args['products']);
+       
         return $products;
     }
 }
