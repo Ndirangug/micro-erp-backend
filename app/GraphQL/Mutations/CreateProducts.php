@@ -13,8 +13,11 @@ class CreateProducts
      */
     public function __invoke($_, array $args)
     {
-        $products = Product::insert($args['products']);
-       
+        $products = [];
+        foreach ($args['products'] as  $product) {
+            $result = Product::create($product);
+            array_push($products, $result);
+        }
         return $products;
     }
 }

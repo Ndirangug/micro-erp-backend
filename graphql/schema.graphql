@@ -254,7 +254,7 @@ type Mutation {
         @create(model: "InventoryItem")
     addSupplierItem(item: SupplierItemInput! @spread): SupplierItem!
         @create(model: "SupplierItem")
-    createProducts(products: [ProductsInput!]): Int
+    createProducts(products: [ProductsInput!]): [Product!]
     removeFromCatalogue(
         store_id: ID
         products: [CatalogueItemInput]
