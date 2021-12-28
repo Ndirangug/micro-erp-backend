@@ -248,10 +248,10 @@ type Mutation {
         items: [InventoryItemInput!]!
         customer_id: Int
     ): GenericRequestResponse
-    registerCustomer(customer: RegisterCustomerInput): Customer!
-    registerShopOwner(shopOwner: ShopOwnerInput): ShopOwner!
-    registerSupplier(supplier: SupplierInput): Supplier!
-    registerShop(shop: ShopInput @spread): Shop! @create(model: "Shop")
+    registerCustomer(customer: RegisterCustomerInput!): Customer!
+    registerShopOwner(shopOwner: ShopOwnerInput!): ShopOwner!
+    registerSupplier(supplier: SupplierInput!): Supplier!
+    registerShop(shop: ShopInput! @spread): Shop! @create(model: "Shop")
     addToInventory(item: InventoryItemInput! @spread): InventoryItem!
         @create(model: "InventoryItem")
     addSupplierItem(item: SupplierItemInput! @spread): SupplierItem!
@@ -259,11 +259,11 @@ type Mutation {
     createProducts(products: [ProductsInput!]): [Product!]
     removeFromCatalogue(
         store_id: ID
-        products: [CatalogueItemInput]
+        products: [CatalogueItemInput!]
     ): [Product!]
     createBrand(brand: BrandInput! @spread): Brand! @create(model: "Brand")
-    makePurchaseOrder(order: PurchaseOrderInput): PurchaseOrder
-    makeSalesOrder(order: SalesOrderInput): SalesOrder
+    makePurchaseOrder(order: PurchaseOrderInput!): PurchaseOrder
+    makeSalesOrder(order: SalesOrderInput!): SalesOrder
     makeTransaction(transaction: TransactionInput! @spread): Transaction!
         @create(model: "Transaction")
 }
