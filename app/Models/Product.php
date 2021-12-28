@@ -8,7 +8,6 @@ use \Illuminate\Database\Eloquent\Relations\HasMany;
 use \Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use \Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
 class Product extends Model
 {
     use HasFactory;
@@ -22,6 +21,7 @@ class Product extends Model
         'title',
         'description',
         'mainImage',
+        'summary',
         'brand_id'
     ];
 

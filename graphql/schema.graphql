@@ -105,6 +105,7 @@ union Object = Product | Customer
 type Product {
     id: ID
     title: String
+    summary: String
     description: String
     mainImage: String
 }
@@ -128,6 +129,7 @@ type SalesOrder {
 input ProductsInput {
     title: String
     description: String
+    summary: String
     mainImage: String
     brand_id: Int
 }
