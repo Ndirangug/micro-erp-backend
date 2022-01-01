@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('summary');
             $table->string('description');
+            $table->string('barcode');
             $table->string('mainImage');
             $table->integer('brand_id')->unsigned();
             $table->timestamps();

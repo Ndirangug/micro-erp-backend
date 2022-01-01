@@ -106,6 +106,7 @@ type Product {
     id: ID
     title: String
     summary: String
+    barcode: String
     description: String
     mainImage: String
 }
@@ -130,6 +131,7 @@ input ProductsInput {
     title: String
     description: String
     summary: String
+    barcode: String
     mainImage: String
     brand_id: Int
 }

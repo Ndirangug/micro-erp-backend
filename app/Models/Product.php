@@ -22,6 +22,7 @@ class Product extends Model
         'description',
         'mainImage',
         'summary',
+        'barcode',
         'brand_id'
     ];
 
