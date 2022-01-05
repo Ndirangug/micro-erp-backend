@@ -20,6 +20,8 @@ class Transaction extends Model
         'comment',
         'ref',
         'method',
+        'shop_id',
+        'sales_order_id',
     ];
 
     /**

@@ -69,7 +69,7 @@ type Transaction {
     amount: Float
     comment: String
     ref: String
-    method: String
+    method: PaymentMethod
     supplier: Supplier
     purchaseOrder: PurchaseOrder
     salesOrder: SalesOrder
@@ -125,6 +125,21 @@ type SalesOrder {
     customer_id: Int
     shop_id: Int
     credit_note_id: Int
+}
+
+type MakeSaleResponse {
+    order: SalesOrder!
+    transaction: Transaction!
+    transactionStatus: TransactionStatus!
+}
+
+enum TransactionStatus {
+    PENDING
+    COMPLETE
+    # Failed eg due to insufficient balance
+    FAILED
+    # Cancelled by paying party
+    CANCELLED
 }
 
 input ProductsInput {
@@ -231,12 +246,17 @@ input TransactionInput {
     amount: Float
     comment: String
     ref: String
-    method: String
+    method: PaymentMethod!
     supplier_id: Int
     purchase_order_id: Int
     sales_order_id: Int
     customer_id: Int
     shop_id: Int
+}
+
+enum PaymentMethod {
+    CASH
+    MPESA
 }
 
 type Query {
@@ -247,9 +267,13 @@ type Query {
 
 type Mutation {
     sellProducts(
-        items: [InventoryItemInput!]!
-        customer_id: Int
-    ): GenericRequestResponse
+        order: SalesOrderInput!
+        transaction: TransactionInput!
+        email: String
+        phone: String
+        sendEmail: Boolean
+        sendSms: Boolean
+    ): MakeSaleResponse
     registerCustomer(customer: RegisterCustomerInput!): Customer!
     registerShopOwner(shopOwner: ShopOwnerInput!): ShopOwner!
     registerSupplier(supplier: SupplierInput!): Supplier!
