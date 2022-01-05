@@ -271,8 +271,8 @@ type Mutation {
         transaction: TransactionInput!
         email: String
         phone: String
-        sendEmail: Boolean
-        sendSms: Boolean
+        sendEmail: Boolean = false
+        sendSms: Boolean = false
     ): MakeSaleResponse
     registerCustomer(customer: RegisterCustomerInput!): Customer!
     registerShopOwner(shopOwner: ShopOwnerInput!): ShopOwner!
